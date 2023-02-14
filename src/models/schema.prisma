@@ -1,0 +1,64 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id         Int          @id @default(autoincrement())
+    createdAt  DateTime     @default(now())
+    createdBy  String
+    updatedAt  DateTime     @updatedAt
+    updatedBy  String
+    email      String       @unique
+    name       String
+    UserVideos UserVideos[]
+}
+
+model Video {
+    id         Int          @id @default(autoincrement())
+    createdAt  DateTime     @default(now())
+    createdBy  String
+    updatedAt  DateTime     @updatedAt
+    updatedBy  String
+    name       String       @unique
+    url        String
+    course     Course       @relation(references: [id], fields: [courseId])
+    courseId   Int
+    UserVideos UserVideos[]
+}
+
+model UserVideos {
+    id       Int     @id @default(autoincrement())
+    user     User    @relation(references: [id], fields: [userId])
+    userId   Int
+    video    Video   @relation(references: [id], fields: [videoId])
+    videoId  Int
+    progress Decimal @default(0)
+}
+
+model Course {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    createdBy String
+    updatedAt DateTime @updatedAt
+    updatedBy String
+    name      String
+    videos    Video[]
+    area      Area     @relation(references: [id], fields: [areaId])
+    areaId    Int
+    url       String
+}
+
+model Area {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    createdBy String
+    updatedAt DateTime @updatedAt
+    updatedBy String
+    name      String
+    courses   Course[]
+}

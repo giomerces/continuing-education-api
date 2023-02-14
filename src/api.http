@@ -1,0 +1,57 @@
+GET http://localhost:8080/video
+
+###
+POST http://localhost:8080/area
+Content-Type: application/json
+
+{
+    "name": "Math",
+    "email": "giovanna@hotmail.com"
+}
+
+###
+POST http://localhost:8080/course
+Content-Type: application/json
+
+{
+    "name": "Estatitics4",
+    "email": "giovanna@hotmail.com",
+    "areaId": 1,
+    "url": "https://continuing-educations-courses.s3.sa-east-1.amazonaws.com/estatistics.JPG"
+}
+
+###
+POST http://localhost:8080/course
+Content-Type: application/json
+
+{
+    "name": "Education",
+    "email": "giovanna@hotmail.com",
+    "areaId": 1,
+    "url": "https://continuing-educations-courses.s3.sa-east-1.amazonaws.com/estatistics.JPG"
+}
+
+
+
+
+###
+POST http://localhost:8080/video
+Content-Type: application/json
+
+{
+    "name": "Estatitics",
+    "email": "giovanna@hotmail.com",
+    "url": "https://www.youtube.com/watch?v=mSk2vjGXA90",
+    "courseId": 1
+}
+
+###
+POST http://localhost:8080/video
+Content-Type: application/json
+
+{
+    "name": "Estatitics 7",
+    "email": "giovanna@hotmail.com",
+    "url": "https://www.youtube.com/watch?v=a0IxPG3Ihu8&list=PLA0675987914E07BB",
+    "courseId": 1
+}
